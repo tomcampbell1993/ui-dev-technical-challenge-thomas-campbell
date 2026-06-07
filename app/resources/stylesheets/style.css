@@ -1,0 +1,11 @@
+.carousel{
+    border: 1px solid black;
+}
+
+.vs-card-header{
+    background-color: red;
+}
+
+.vs-card{
+  background-color: grey;
+}
