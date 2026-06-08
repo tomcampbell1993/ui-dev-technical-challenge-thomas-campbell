@@ -13,6 +13,7 @@ import {
   VsBody,
 } from '@visitscotland/component-library/components';
 import "/resources/stylesheets/style.css"
+import imageUrl from "/resources/images/edinburgh-castle.jpg"
 
 const pinia = createPinia()
 const app = createApp(App)
@@ -22,35 +23,44 @@ const cardListMultipleRows = [
   {
     title: 'Unusual accommodation in Scotland',
     description: 'Fancy staying somewhere a little different? From castles to lighthouses, teepees to brochs, there\'s lots of unusual choices.',
-    image: './resources/images/edinburgh-castle.jpg',
+    image: imageUrl,
+    link: '#',
+  },
+  {
+    title: 'Title 2',
+    description: 'Description 2',
+    image: imageUrl,
     link: '#',
   },
   {
     title: 'Unusual accommodation in Scotland',
     description: 'Fancy staying somewhere a little different? From castles to lighthouses, teepees to brochs, there\'s lots of unusual choices.',
-    image: './resources/images/edinburgh-castle.jpg',
+    image: imageUrl,
     link: '#',
   },
   {
     title: 'Unusual accommodation in Scotland',
     description: 'Fancy staying somewhere a little different? From castles to lighthouses, teepees to brochs, there\'s lots of unusual choices.',
-    image: './resources/images/edinburgh-castle.jpg',
-    link: '#',
-  },
-  {
-    title: 'Unusual accommodation in Scotland',
-    description: 'Fancy staying somewhere a little different? From castles to lighthouses, teepees to brochs, there\'s lots of unusual choices.',
-    image: './resources/images/edinburgh-castle.jpg',
+    image: imageUrl,
     link: '#',
   },
 ]
+
+const favoriteList = {
+  title: 'default favorite title',
+  description: 'default favorite description',
+  image: imageUrl,
+  link: '#',
+}
+
+
 </script>
 
 <template>
   <div>
     <VsHeading headingStyle="heading-l">UI Developer technical challenge</VsHeading>
-      <VsToggleButton Button icon="fa-regular fa-heart" label="Add to favourites" pressedIcon="fa-solid fa-heart"
-        pressedLabel="Remove from favourites" variant="default" />
+    <VsToggleButton Button icon="fa-regular fa-heart" label="Add to favourites" pressedIcon="fa-solid fa-heart"
+      pressedLabel="Remove from favourites" variant="default" />
   </div>
   <!-- <img src="./resources/images/edinburgh-castle.jpg" /> -->
 
@@ -82,6 +92,8 @@ const cardListMultipleRows = [
     <VsRow>
       <VsCol v-for="(card, index) in cardListMultipleRows" :key="'card-list-multiple-rows-' + index" cols="12" sm="6"
         lg="4" xl="3" class="mb-150">
+        <VsToggleButton Button icon="fa-regular fa-heart" label="Add to favourites" pressedIcon="fa-solid fa-heart"
+          pressedLabel="Remove from favourites" variant="default" @click="()=>{console.log(card.title)}" />
         <VsCard card-style="outlined">
           <template #vs-card-header>
             <img v-if="card.image" :src="card.image"
